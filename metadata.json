@@ -1,0 +1,7 @@
+{
+  "name": "VisionPrompt Pro",
+  "description": "Professional image reverse-engineering tool. Extract high-density visual information into structured JSON prompts using Gemini 3.1 Pro.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
