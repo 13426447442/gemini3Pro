@@ -30,7 +30,13 @@ const SYSTEM_INSTRUCTION = `
 `;
 
 export async function analyzeImage(file: File, options: AnalysisOptions): Promise<string> {
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const apiKey = process.env.GEMINI_API_KEY;
+  
+  if (!apiKey || apiKey === "undefined" || apiKey === "") {
+    throw new Error("未检测到 API Key。请在 .env.local 中设置 GEMINI_API_KEY 或 VITE_GEMINI_API_KEY。");
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
   const model = "gemini-3.1-pro-preview";
 
   const base64Data = await fileToBase64(file);
